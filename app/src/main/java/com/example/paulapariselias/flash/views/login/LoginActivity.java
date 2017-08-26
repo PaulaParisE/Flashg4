@@ -1,16 +1,20 @@
-package com.example.paulapariselias.flash;
+package com.example.paulapariselias.flash.views.login;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.paulapariselias.flash.R;
+import com.example.paulapariselias.flash.presenter.LoginCallback;
+import com.example.paulapariselias.flash.presenter.LoginValidate;
+import com.example.paulapariselias.flash.views.main.MainActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ResultCodes;
 
 import java.util.Arrays;
 
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginCallback {
 
     private static final int RC_SIGN_IN = 123;
 
@@ -20,18 +24,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        if(new CurrentUser().getCurrentUser() != null){
-            logged();
-        }else {
-            singUp();
-        }
+            new LoginValidate(this).userLogin();
 
 
 
 
     }
 
-    private void singUp(){
+    public void singUp(){
         startActivityForResult(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
@@ -41,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
                                         new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
                                         new AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build()/*,
                                         new AuthUI.IdpConfig.Builder(AuthUI.TWITTER_PROVIDER).build()*/))
+                        .setTheme(R.style.LoginTheme)
+                        .setLogo(R.mipmap.logo)
 
                         .build(),
                 RC_SIGN_IN);
@@ -59,12 +61,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void logged() {
+    public void logged() {
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
     }
+
 
 
 
