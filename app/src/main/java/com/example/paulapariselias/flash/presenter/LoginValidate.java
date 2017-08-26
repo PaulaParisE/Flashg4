@@ -12,6 +12,7 @@ public class LoginValidate {
 
     public LoginValidate(LoginCallback callback) {
         this.callback = callback;
+        
     }
 
     public  void  userLogin(){
