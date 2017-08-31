@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="16dp"
-    tools:context="com.example.paulapariselias.flash.views.main.DrawerFragment">
+    tools:context="com.example.paulapariselias.flash.views.main.drawer.DrawerFragment">
 
     <com.github.siyamed.shapeimageview.CircularImageView
         android:id="@+id/avatarCi"

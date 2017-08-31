@@ -22,7 +22,7 @@
 
         <fragment
             android:id="@+id/drawerFragment"
-            android:name="com.example.paulapariselias.flash.views.main.DrawerFragment"
+            android:name="com.example.paulapariselias.flash.views.main.drawer.DrawerFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
