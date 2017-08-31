@@ -16,6 +16,8 @@ public class Nodes {
 
     public DatabaseReference users () {
         return root.child("users");
+
+
     }
 
     public DatabaseReference user(String key){
